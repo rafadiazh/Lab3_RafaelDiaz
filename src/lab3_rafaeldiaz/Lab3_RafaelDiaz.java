@@ -27,6 +27,8 @@ public class Lab3_RafaelDiaz {
     public static void main(String[] args) {
         Jugador j = new Jugador();
         Equipo e = new Equipo();
+        ArrayList suplentes = new ArrayList();
+        ArrayList titulares = new ArrayList();
         ArrayList<Jugador> comprados = new ArrayList();
         ArrayList<Jugador> freeagents = new ArrayList();
         ArrayList<Equipo> equipos = new ArrayList();
@@ -218,7 +220,7 @@ public class Lab3_RafaelDiaz {
                                 System.out.println("Escoja el numero del jugador");
                                 int numjug = sc.nextInt();
                                 freeagents.set(poscomprar, new Jugador(nombre, apellido, "comprado", pais, pie, equipos.get(equip).getNombreequipo(), edad, numjug, precio));
-                                e.getJugadores().add(freeagents.get(poscomprar));
+                                equipos.get(equip).getJugadores().add(freeagents.get(poscomprar));
                                 comprados.add(freeagents.get(poscomprar));
                                 freeagents.remove(poscomprar);
                             } else {
@@ -302,8 +304,33 @@ public class Lab3_RafaelDiaz {
                         System.out.println("Cuantos medios desea tener?");
                         int med = sc.nextInt();
                         System.out.println("Cuantos delanteros desea tener?");
+                        int del = sc.nextInt();
+                        
+                        suplentes.set(orgequip,equipos.get(orgequip).getJugadores());
+                        for (int i = 0; i < (equipos.get(orgequip)).getJugadores().size(); i++) {
+                            System.out.println(i+" "+(equipos.get(orgequip)).getJugadores().get(i));
+                        }
+                        for (int i = 0; i < def; i++) {
+                            System.out.println("Escoja un defensa");
+                            int posdef = sc.nextInt();
+                            
+                            titulares.set(orgequip,equipos.get(orgequip).getJugadores().get(posdef));
+                        }
+                        for (int i = 0; i < med; i++) {
+                            System.out.println("Escoja un mediocampista");
+                            int posmed = sc.nextInt();
+                            titulares.set(orgequip,equipos.get(orgequip).getJugadores().get(posmed));
+                        }
+                        for (int i = 0; i < del; i++) {
+                            System.out.println("Escoja un delantero");
+                            int posdel = sc.nextInt();
+                            titulares.set(orgequip,equipos.get(orgequip).getJugadores().get(posdel));
+                        }
+                        
+                        System.out.println(titulares);
+                        
                     } else {
-                        System.out.println("No tiene suficientes jugadores");
+                        System.out.println("No tiene suficientes jugadores ");
                     }
                     break;
                 case 4:
