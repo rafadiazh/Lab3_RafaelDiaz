@@ -184,10 +184,14 @@ static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
                         
                         break;
                     case 3:
-                        
+                        for (int i = 0; i < freeagents.size(); i++) {
+                            System.out.println(i+" "+freeagents.get(i));
+                        }
                         break;
                     case 4:
-                        
+                        System.out.println("Que jugador desea eliminar? 0,1,2...");
+                        int poseliminar = sc.nextInt();
+                        freeagents.remove(poseliminar);
                         break;
                     case 5:
                         
@@ -201,7 +205,19 @@ static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
                 
                 break;
             case 2:
-                
+                System.out.println("1. Agregar\n2. Listar\n3. Modificar\n4. Eliminar");
+                int opcionequipo= sc.nextInt();
+                switch(opcionequipo){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
+                        
                 break;
             case 3:
                 
