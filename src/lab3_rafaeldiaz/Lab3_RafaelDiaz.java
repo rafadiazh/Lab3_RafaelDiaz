@@ -16,12 +16,16 @@ public class Lab3_RafaelDiaz {
 static Scanner sc = new Scanner(System.in);
 static int opcion=0, edad=0, numero=0, precio=0;
 static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
+
+static String nombreequipo, ciudad;
+    static int palmares, presupuesto;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Jugador j = new Jugador();
         Equipo e = new Equipo();
+        ArrayList<Jugador>comprados = new ArrayList();
         ArrayList<Jugador> freeagents = new ArrayList();
         ArrayList<Equipo> equipos = new ArrayList();
         do{
@@ -187,6 +191,9 @@ static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
                         for (int i = 0; i < freeagents.size(); i++) {
                             System.out.println(i+" "+freeagents.get(i));
                         }
+                        for (int i = 0; i < comprados.size(); i++) {
+                            System.out.println(i+" "+comprados.get(i));
+                        }
                         break;
                     case 4:
                         System.out.println("Que jugador desea eliminar? 0,1,2...");
@@ -194,6 +201,23 @@ static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
                         freeagents.remove(poseliminar);
                         break;
                     case 5:
+                        for (int i = 0; i < equipos.size(); i++) {
+                            System.out.println(i+" "+equipos.get(i));
+                        }
+                        System.out.println("Que equipo desea realizar la compra? 0,1,2...");
+                        int equip = sc.nextInt();
+                        for (int i = 0; i < freeagents.size(); i++) {
+                            System.out.println(i+" "+freeagents.get(i));
+                        }
+                        System.out.println("Que jugador desea comprar? 0,1,2...");
+                        int poscomprar = sc.nextInt();
+                        
+                        
+                        equipos.set(equip,new Equipo(nombreequipo,ciudad,palmares, presupuesto-freeagents.get(poscomprar).getPrecio()));
+                        freeagents.set(poscomprar, new Jugador(nombre,apellido,"comprado",pais,  pie,  equipos.get(equip).getNombreequipo(), edad, numero, precio));
+                        e.getJugadores().add(freeagents.get(poscomprar));
+                        comprados.add(freeagents.get(poscomprar));
+                        freeagents.remove(poscomprar);
                         
                         break;
                     default:
@@ -209,12 +233,55 @@ static String nombre="", apellido="", estado="", pais="", pie="", equipo="";
                 int opcionequipo= sc.nextInt();
                 switch(opcionequipo){
                     case 1:
+                        sc = new Scanner(System.in);
+                        System.out.println("Nombre de equipo");
+                        nombreequipo = sc.nextLine();
+                        sc = new Scanner(System.in);
+                        System.out.println("Cantidad de Palmares");
+                        palmares = sc.nextInt();
+                        sc = new Scanner(System.in);
+                        System.out.println("Ciudad");
+                        ciudad = sc.nextLine();
+                        sc = new Scanner(System.in);
+                        System.out.println("Presupuesto");
+                        presupuesto = sc.nextInt();
+                        e = new Equipo(nombreequipo,ciudad,palmares, presupuesto);
+                        equipos.add(e);
                         break;
                     case 2:
+                        for (int i = 0; i < equipos.size(); i++) {
+                            System.out.println(i+" "+equipos.get(i));
+                            for (int k = 0; k < equipos.get(i).getJugadores().size(); k++) {
+                                System.out.println(i+" "+equipos.get(i).getJugadores());
+                                
+                            }
+                        }
                         break;
                     case 3:
+                        System.out.println("Que equipo desea modificar? 0,1,2...");
+                        int posmode= sc.nextInt();
+                        sc = new Scanner(System.in);
+                        System.out.println("Nombre de equipo");
+                        nombreequipo = sc.nextLine();
+                        sc = new Scanner(System.in);
+                        System.out.println("Cantidad de Palmares");
+                        palmares = sc.nextInt();
+                        sc = new Scanner(System.in);
+                        System.out.println("Ciudad");
+                        ciudad = sc.nextLine();
+                        sc = new Scanner(System.in);
+                        System.out.println("Presupuesto");
+                        presupuesto = sc.nextInt();
+                        e = new Equipo(nombreequipo,ciudad,palmares, presupuesto);
+                        equipos.set(posmode, e);
                         break;
                     case 4:
+                        System.out.println("Que equipo desea eliminar? 0,1,2...");
+                        int eliminare = sc.nextInt();
+                        equipos.remove(eliminare);
+                        break;
+                    default:
+                        System.out.println("No es una opcion");
                         break;
                 }
                         
