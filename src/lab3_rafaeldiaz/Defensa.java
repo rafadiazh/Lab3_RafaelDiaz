@@ -16,6 +16,8 @@ public class Defensa extends Jugador{
         super();
     }
 
+    
+
     public Defensa(int agresividad, int altura, int peso, int velocidad, String nombre, String apellido, String estado, String pais, String pie, String equipo, int edad, int numero, int precio) {
         super(nombre, apellido, estado, pais, pie, equipo, edad, numero, precio);
         this.agresividad = agresividad;

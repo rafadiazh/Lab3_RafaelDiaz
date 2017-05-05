@@ -17,6 +17,13 @@ public class Delantero extends Jugador {
         super();
     }
 
+    public Delantero(int definicion, int altura, int velocidad, double promedio) {
+        this.definicion = definicion;
+        this.altura = altura;
+        this.velocidad = velocidad;
+        this.promedio = promedio;
+    }
+
     public Delantero(int definicion, int altura, int velocidad, double promedio, String nombre, String apellido, String estado, String pais, String pie, String equipo, int edad, int numero, int precio) {
         super(nombre, apellido, estado, pais, pie, equipo, edad, numero, precio);
         this.definicion = definicion;
